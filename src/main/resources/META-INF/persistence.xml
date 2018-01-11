@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--<!DOCTYPE hibernate-configuration PUBLIC-->
+        <!--"-//Hibernate/Hibernate Configuration DTD//EN"-->
+        <!--"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+<persistence-unit name="wttmPool" transaction-type="JTA">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+
+    <jta-data-source>java:jboss/datasources/wttmPool</jta-data-source>
+
+    <class>ru.amaev.Data.entities.Way</class>
+    <class>ru.amaev.Data.entities.User</class>
+    <class>ru.amaev.Data.entities.Role</class>
+
+    <properties>
+        <property name="hibernate.transaction.jta.platform"
+                  value="JBossAS"/>
+        <property name="jboss.as.jpa.managed" value="true" />
+        <property name="verifyServerCertificate" value="false" />
+        <property name="useSSL" value="false" />
+        <property name="autoReconnect" value="true" />
+        <!--<property name="jboss.as.jpa.providerModule" value="org.hibernate:5.1" />-->
+        <property name="jboss.entity.manager.factory.jndi.name" value="java:/MyEntityManagerFactory"/>
+        <!--<property name="hibernate.cache.use_second_level_cache" value="true"/>-->
+
+        <property name="hibernate.archive.autodetection" value="class" />
+        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+        <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/wttm" />
+        <property name="hibernate.connection.username" value="mikado" />
+        <property name="hibernate.connection.password" value="odakim" />
+        <property name="connection_poolsize" value="1"/>
+        <property name="hibernate.flushMode" value="FLUSH_AUTO" />
+
+        <property name="hibernate.show_sql" value="true"/>
+        <property name="hibernate.hbm2ddl.auto" value="update" />
+        <property name="hibernate.connection.autocommit" value="true" />
+    </properties>
+</persistence-unit>
+</persistence>
+<!--<hibernate-configuration>-->
+    <!--<session-factory>-->
+
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/wttm</property>-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="connection.username">mikado</property>-->
+        <!--<property name="connection.password">odakim</property>-->
+
+        <!--&lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
+        <!--<property name="connection.pool_size">1</property>-->
+
+        <!--&lt;!&ndash; SQL dialect &ndash;&gt;-->
+        <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+
+        <!--&lt;!&ndash; Enable Hibernate's automatic session context management &ndash;&gt;-->
+        <!--<property name="current_session_context_class">thread</property>-->
+
+        <!--&lt;!&ndash; Disable the second-level cache  &ndash;&gt;-->
+        <!--<property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>-->
+
+        <!--&lt;!&ndash; Echo all executed SQL to stdout &ndash;&gt;-->
+        <!--<property name="show_sql">true</property>-->
+        <!--<mapping class="ru.amaev.Data.entities.Way"></mapping>-->
+        <!--<mapping class="ru.amaev.Data.entities.User"></mapping>-->
+        <!--<mapping class="ru.amaev.Data.entities.Role"></mapping>-->
+
+    <!--</session-factory>-->
+<!--</hibernate-configuration>-->
